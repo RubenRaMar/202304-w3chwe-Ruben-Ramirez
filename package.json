@@ -1,5 +1,5 @@
 {
-  "name": "202304-w3ch3-ruben-ramirez-tirmary-reyes",
+  "name": "202304-w3chwe-ruben-ramirez",
   "version": "1.0.0",
   "description": "",
   "main": "public/js/index.js",
@@ -10,7 +10,9 @@
     "build:dev": "tsc -w",
     "prepare": "husky install",
     "test": "jest",
-    "test:dev": "jest --watchAll"
+    "test:dev": "jest --watchAll",
+    "build-style": "sass src/sass/styles.scss public/css/styles.css",
+    "build-style:dev": "sass --watch src/sass/styles.scss public/css/styles.css"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +28,7 @@
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
     "jest-ts-webcompat-resolver": "^1.0.0",
+    "sass": "^1.62.0",
     "ts-jest": "^29.1.0",
     "typescript": "^5.0.4"
   },
