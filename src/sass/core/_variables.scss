@@ -1,0 +1,14 @@
+@use "functions";
+
+$color-primary: #24acf0;
+$color-secondary: #edf024;
+$color-white: #ffffff;
+$color-light-grey: #d1d1d1;
+$color-medium-grey: #a1a1a1;
+$color-dark-grey: #2f2f2fab;
+$color-very-dark: #222222;
+
+$text-size: functions.pixelsToRem(18);
+
+$typography-main: "Josefin Sans", sans-serif;
+$typography-secondary: "Lobster Two", cursive;

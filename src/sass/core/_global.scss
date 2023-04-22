@@ -1,0 +1,17 @@
+@use "variables";
+
+html {
+  font-family: variables.$typography-main;
+  color: variables.$color-very-dark;
+}
+
+body {
+  font-size: variables.$text-size;
+}
+
+button {
+  font: inherit;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
