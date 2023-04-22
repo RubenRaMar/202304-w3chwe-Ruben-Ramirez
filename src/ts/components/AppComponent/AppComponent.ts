@@ -16,6 +16,10 @@ class AppComponent extends Component {
         </ul>
       </nav>
     </header>
+    <section class="pokedex">
+      <h2 class="pokedex__title">Pokédex</h2>
+      <p class="pokedex__info">Choose your favorite Pokémon</p>
+    </section>
     `;
   }
 }
