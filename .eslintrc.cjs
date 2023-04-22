@@ -2,7 +2,6 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    node: true,
   },
   extends: ["xo", "prettier"],
   overrides: [
@@ -23,6 +22,7 @@ module.exports = {
   },
   rules: {
     "no-console": "error",
+    "no-unused-vars": "error",
     "no-new": 0,
   },
 };
