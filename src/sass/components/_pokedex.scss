@@ -1,0 +1,16 @@
+.pokedex {
+  padding-top: 102px;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    margin: 9px;
+  }
+
+  &__info {
+    margin: 0;
+  }
+}
