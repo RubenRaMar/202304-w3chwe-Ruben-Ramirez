@@ -12,7 +12,7 @@ class ButtonComponent extends Component {
   }
 
   renderHtml(): void {
-    this.element.textContent = this.text;
+    this.element.innerHTML = this.text;
   }
 }
 

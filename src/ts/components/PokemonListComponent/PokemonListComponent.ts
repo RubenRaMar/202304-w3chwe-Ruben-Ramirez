@@ -12,7 +12,10 @@ class PokemonListComponent extends Component {
   private pokemons: PokemonIdStructure[] = [];
   private pokemonData: PokemonDataStructure;
 
-  constructor(parentElement: Element) {
+  constructor(
+    parentElement: Element,
+    private readonly maximumPokemons: number
+  ) {
     super(parentElement, "card-list", "ul");
 
     (async () => this.getPokemons())();
@@ -28,7 +31,10 @@ class PokemonListComponent extends Component {
 
   async getPokemonData(): Promise<void> {
     this.pokemons.forEach(async (pokemon, position) => {
-      if (position >= 0 && position <= 23) {
+      if (
+        position >= this.maximumPokemons - 23 &&
+        position <= this.maximumPokemons
+      ) {
         const response = await fetch(pokemon.url);
 
         const pokemonData = (await response.json()) as PokemonDataStructure;
@@ -42,6 +48,14 @@ class PokemonListComponent extends Component {
 
   renderHtml(): void {
     new PokemonCardComponent(this.element, this.pokemonData);
+
+    const displayedCards = document.querySelector(
+      ".arrows-contanier__displayed-cards"
+    )!;
+
+    displayedCards.textContent = `${this.maximumPokemons + 1}/${
+      this.pokemons.length
+    }`;
   }
 }
 
