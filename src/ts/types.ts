@@ -16,7 +16,7 @@ export interface PokemonDataStructure {
   sprites: SpritesStructure;
   abilities: AbilitiesStructure[];
   types: TypesStructure[];
-  stats: StatStructure[];
+  stats: StatsStructure[];
 }
 
 interface SpritesStructure {
@@ -31,7 +31,7 @@ interface DreamWorldStructure {
   front_default: string;
 }
 
-interface StatStructure {
+interface StatsStructure {
   base_stat: number;
   stat: StatStructure;
 }
@@ -56,5 +56,5 @@ interface AbilitiesStructure {
 
 interface AbilityStructure {
   name: string;
-  url: Promise<void>;
+  url: string;
 }

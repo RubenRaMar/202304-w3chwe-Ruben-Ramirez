@@ -1,5 +1,5 @@
 import AppComponent from "./components/AppComponent/AppComponent.js";
-import CardListComponent from "./components/CardListComponent/CardListComponent.js";
+import PokemonListComponent from "./components/PokemonListComponent/PokemonListComponent.js";
 
 const appElement = document.querySelector(".app");
 
@@ -10,5 +10,5 @@ if (appElement) {
 const pokedexElement = document.querySelector(".pokedex");
 
 if (pokedexElement) {
-  new CardListComponent(pokedexElement);
+  new PokemonListComponent(pokedexElement);
 }

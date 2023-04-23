@@ -1,7 +1,7 @@
 import { type PokemonDataStructure } from "../../types.js";
 import Component from "../Component/Component.js";
 
-class CardComponent extends Component {
+class PokemonCardComponent extends Component {
   constructor(
     parentElement: Element,
     private readonly pokemonData: PokemonDataStructure
@@ -35,4 +35,4 @@ class CardComponent extends Component {
   }
 }
 
-export default CardComponent;
+export default PokemonCardComponent;
