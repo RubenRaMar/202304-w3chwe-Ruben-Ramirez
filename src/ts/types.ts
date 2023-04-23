@@ -1,4 +1,6 @@
 export interface PokemonResponseStructure {
+  next: string;
+  previous: string;
   results: PokemonIdStructure[];
 }
 

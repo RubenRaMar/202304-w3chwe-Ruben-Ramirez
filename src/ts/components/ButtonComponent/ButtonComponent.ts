@@ -1,6 +1,6 @@
 import Component from "../Component/Component.js";
 
-abstract class ButtonComponent extends Component {
+class ButtonComponent extends Component {
   constructor(
     parentElement: Element,
     className: string,
@@ -14,8 +14,6 @@ abstract class ButtonComponent extends Component {
   renderHtml(): void {
     this.element.innerHTML = this.text;
   }
-
-  abstract eventListener(): void;
 }
 
 export default ButtonComponent;

@@ -10,5 +10,5 @@ if (appElement) {
 const pokedexElement = document.querySelector(".pokedex");
 
 if (pokedexElement) {
-  new PokemonListComponent(pokedexElement);
+  new PokemonListComponent(pokedexElement, 23);
 }
