@@ -1,5 +1,6 @@
 .pokedex {
-  padding-top: 102px;
+  top: 102px;
+  position: relative;
   width: 80%;
   margin: 0 auto;
   display: flex;
@@ -7,10 +8,11 @@
   align-items: center;
 
   &__title {
-    margin: 9px;
+    margin-block: 20px 0;
+    font-size: 55px;
   }
 
   &__info {
-    margin: 0;
+    margin: 22px;
   }
 }
