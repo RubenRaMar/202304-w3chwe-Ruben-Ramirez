@@ -7,29 +7,38 @@ export interface PokemonIdStructure {
   url: string;
 }
 
-export interface PokemonStructure {
+export interface PokemonDataStructure {
   name: string;
   id: number;
   height: number;
   weight: number;
-  experieceBase: number;
-  image: ImageStructure;
-  stats: StatStructure[];
+  base_experience: number;
+  sprites: SpritesStructure;
+  abilities: AbilitiesStructure[];
   types: TypesStructure[];
-  skills: SkillStructure[];
+  stats: StatsStructure[];
 }
 
-interface ImageStructure {
-  image: Promise<string>;
+interface SpritesStructure {
+  other: OtherStructure;
 }
 
-interface StatStructure {
-  baseStat: number;
+interface OtherStructure {
+  dream_world: DreamWorldStructure;
+}
+
+interface DreamWorldStructure {
+  front_default: string;
+}
+
+interface StatsStructure {
+  base_stat: number;
   stat: StatStructure;
 }
 
 interface StatStructure {
   name: string;
+  url: string;
 }
 
 interface TypesStructure {
@@ -38,18 +47,14 @@ interface TypesStructure {
 
 interface TypeStructure {
   name: string;
+  url: string;
 }
 
-interface SkillStructure {
+interface AbilitiesStructure {
+  ability: AbilityStructure;
+}
+
+interface AbilityStructure {
   name: string;
-  info: Promise<SkillInfoStructure[]>;
-}
-
-interface SkillInfoStructure {
-  name: string;
-  effect: Promise<SkillInfoTextStructure[]>;
-}
-
-interface SkillInfoTextStructure {
-  effect: string;
+  url: string;
 }
