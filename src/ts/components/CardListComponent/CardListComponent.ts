@@ -1,4 +1,5 @@
 import {
+  type PokemonDataStructure,
   type PokemonIdStructure,
   type PokemonResponseStructure,
 } from "../../types.js";
@@ -9,6 +10,7 @@ const apiUrl = "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0";
 
 class CardListComponent extends Component {
   private pokemons: PokemonIdStructure[] = [];
+  private pokemonData: PokemonDataStructure;
 
   constructor(parentElement: Element) {
     super(parentElement, "card-list", "ul");
@@ -21,16 +23,27 @@ class CardListComponent extends Component {
     const pokemons = (await response.json()) as PokemonResponseStructure;
 
     this.pokemons = pokemons.results;
+    (async () => this.getPokemonData())();
+  }
 
-    this.renderHtml();
+  async getPokemonData(): Promise<void> {
+    this.pokemons.forEach(async (pokemon, position) => {
+      if (position >= 0 && position <= 23) {
+        console.log(`Pre fetchpokemon ${pokemon.name}`);
+        const response = await fetch(pokemon.url);
+        console.log(`Post fetchpokemon ${pokemon.name}`);
+
+        const pokemonData = (await response.json()) as PokemonDataStructure;
+
+        this.pokemonData = pokemonData;
+
+        this.renderHtml();
+      }
+    });
   }
 
   renderHtml(): void {
-    this.pokemons.forEach((pokemon, position) => {
-      if (position <= 23) {
-        new CardComponent(this.element, pokemon);
-      }
-    });
+    new CardComponent(this.element, this.pokemonData);
   }
 }
 

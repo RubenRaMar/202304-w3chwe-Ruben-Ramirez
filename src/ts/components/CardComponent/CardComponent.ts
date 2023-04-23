@@ -1,23 +1,13 @@
-import {
-  type PokemonIdStructure,
-  type PokemonDataStructure,
-} from "../../types.js";
+import { type PokemonDataStructure } from "../../types.js";
 import Component from "../Component/Component.js";
 
 class CardComponent extends Component {
-  pokemonData: PokemonDataStructure;
-
-  constructor(parentElement: Element, public pokemon: PokemonIdStructure) {
+  constructor(
+    parentElement: Element,
+    private readonly pokemonData: PokemonDataStructure
+  ) {
     super(parentElement, "card", "li");
 
-    (async () => this.getPokemonData())();
-  }
-
-  async getPokemonData(): Promise<void> {
-    const response = await fetch(this.pokemon.url);
-    const pokemonData = (await response.json()) as PokemonDataStructure;
-
-    this.pokemonData = pokemonData;
     this.renderHtml();
   }
 
