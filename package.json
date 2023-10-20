@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
+    "start": "npx serve public",
     "build": "tsc",
     "build:dev": "tsc -w",
     "prepare": "husky install",

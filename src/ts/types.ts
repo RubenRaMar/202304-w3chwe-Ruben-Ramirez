@@ -1,6 +1,5 @@
 export interface PokemonResponseStructure {
-  next: string;
-  previous: string;
+  count: number;
   results: PokemonIdStructure[];
 }
 
@@ -22,6 +21,7 @@ export interface PokemonDataStructure {
 }
 
 interface SpritesStructure {
+  front_default: string;
   other: OtherStructure;
 }
 

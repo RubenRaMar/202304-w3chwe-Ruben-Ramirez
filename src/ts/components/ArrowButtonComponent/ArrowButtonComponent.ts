@@ -15,7 +15,7 @@ class ArrowButtonComponent extends ButtonComponent {
       const maximumPokemons = paginatePokemonLists();
 
       if (pokedexElement) {
-        if (maximumPokemons < 23) {
+        if (maximumPokemons <= -1) {
           return seeMorePokemons();
         }
 

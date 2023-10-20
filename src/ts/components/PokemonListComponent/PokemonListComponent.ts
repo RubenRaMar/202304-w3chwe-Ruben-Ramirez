@@ -6,56 +6,54 @@ import {
 import Component from "../Component/Component.js";
 import PokemonCardComponent from "../PokemonCardComponent/PokemonCardComponent.js";
 
-const apiUrl = "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0";
+const apiUrl = "https://pokeapi.co/api/v2/pokemon?limit=24&offset=";
 
 class PokemonListComponent extends Component {
   private pokemons: PokemonIdStructure[] = [];
-  private pokemonData: PokemonDataStructure;
+  private pokemonData: PokemonDataStructure[] = [];
+  private length: number;
 
-  constructor(
-    parentElement: Element,
-    private readonly maximumPokemons: number
-  ) {
+  constructor(parentElement: Element, private readonly maximumPokemons = 0) {
     super(parentElement, "card-list", "ul");
 
-    (async () => this.getPokemons())();
+    (async () => {
+      await this.getPokemons();
+      await this.getPokemonData();
+
+      this.renderHtml();
+    })();
   }
 
   async getPokemons(): Promise<void> {
-    const response = await fetch(apiUrl);
+    const response = await fetch(`${apiUrl}${this.maximumPokemons * 24}`);
     const pokemons = (await response.json()) as PokemonResponseStructure;
 
     this.pokemons = pokemons.results;
-    (async () => this.getPokemonData())();
+    this.length = pokemons.count;
   }
 
   async getPokemonData(): Promise<void> {
-    this.pokemons.forEach(async (pokemon, position) => {
-      if (
-        position >= this.maximumPokemons - 23 &&
-        position <= this.maximumPokemons
-      ) {
-        const response = await fetch(pokemon.url);
-
-        const pokemonData = (await response.json()) as PokemonDataStructure;
-
-        this.pokemonData = pokemonData;
-
-        this.renderHtml();
-      }
+    const pokemonDataPromises = this.pokemons.map(async (pokemon) => {
+      const response = await fetch(pokemon.url);
+      const pokemonData = (await response.json()) as PokemonDataStructure;
+      return pokemonData;
     });
+
+    this.pokemonData = await Promise.all(pokemonDataPromises);
   }
 
   renderHtml(): void {
-    new PokemonCardComponent(this.element, this.pokemonData);
+    this.pokemonData.forEach((data) => {
+      new PokemonCardComponent(this.element, data);
+    });
 
     const displayedCards = document.querySelector(
       ".arrows-contanier__displayed-cards"
     )!;
 
-    displayedCards.textContent = `${this.maximumPokemons + 1}/${
-      this.pokemons.length
-    }`;
+    displayedCards.textContent = `${this.maximumPokemons + 1}/${Math.ceil(
+      this.length / 24
+    )}`;
   }
 }
 

@@ -20,7 +20,8 @@ class PokemonCardComponent extends Component {
       <span class="card__id">Nº ${this.pokemonData.id}</span>
       <h2 class="card__name">${this.pokemonData.name}</h2>
       <img class="card__image" src=${
-        this.pokemonData.sprites.other.dream_world.front_default
+        this.pokemonData.sprites.other.dream_world.front_default ||
+        this.pokemonData.sprites.front_default
       } alt="${this.pokemonData.name}" width="125" height="150">
       
       <div class="card__type-container">${
