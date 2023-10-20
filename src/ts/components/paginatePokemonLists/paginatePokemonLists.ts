@@ -1,11 +1,11 @@
-let maximumPokemons = 23;
+let maximumPokemons = 0;
 
 export const seeMorePokemons = () => {
-  maximumPokemons += 23;
+  maximumPokemons += 1;
   return maximumPokemons;
 };
 
 export const seeFewerPokemons = () => {
-  maximumPokemons -= 23;
+  maximumPokemons -= 1;
   return maximumPokemons;
 };

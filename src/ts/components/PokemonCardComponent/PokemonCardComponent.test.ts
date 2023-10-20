@@ -18,7 +18,10 @@ describe("Given a PokemonCardComponent component", () => {
         weight: 7,
         base_experience: 54,
         abilities: [{ ability: { name: "overgrow", url: "abilityData" } }],
-        sprites: { other: { dream_world: { front_default: "image" } } },
+        sprites: {
+          front_default: "image",
+          other: { dream_world: { front_default: "image" } },
+        },
         types: [{ type: { name: "grass", url: "typeData" } }],
         stats: [{ base_stat: 45, stat: { name: "hp", url: "statData" } }],
       };
